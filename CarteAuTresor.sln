@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarteAuTresor", "CarteAuTresor\CarteAuTresor.csproj", "{6A2633DF-6630-4558-9F05-22CDF39F3831}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarteAuTresorTests", "CarteAuTresorTests1\CarteAuTresorTests.csproj", "{D6123713-8223-45B2-A319-7005966A9CAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A2633DF-6630-4558-9F05-22CDF39F3831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A2633DF-6630-4558-9F05-22CDF39F3831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A2633DF-6630-4558-9F05-22CDF39F3831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A2633DF-6630-4558-9F05-22CDF39F3831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6123713-8223-45B2-A319-7005966A9CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6123713-8223-45B2-A319-7005966A9CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6123713-8223-45B2-A319-7005966A9CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6123713-8223-45B2-A319-7005966A9CAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B75ADE57-2AF5-42A4-A011-0C673953E091}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "CarteAuTresor": {
+      "commandName": "Project",
+      "commandLineArgs": "fileTest.txt",
+      "workingDirectory": "C:\\Users\\42523\\Desktop\\boulot\\TestCarbonIt"
+    }
+  }
+}
