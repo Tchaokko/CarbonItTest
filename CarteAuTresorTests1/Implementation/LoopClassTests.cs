@@ -83,7 +83,33 @@ namespace CarteAuTresor.Tests
 
             Assert.AreEqual(0, loopClassTest.AdventurerList[0].posX);
             Assert.AreEqual(1, loopClassTest.AdventurerList[0].posY);
-            Assert.AreEqual(true, result.TileMap[0, 1].gotAdventurer);
+            Assert.AreEqual(true, result.TileMap[1, 0].gotAdventurer);
+        }
+
+        [TestMethod]
+        public void Loop_ComplexMoving()
+        {
+            //Arrange
+            var advent = new Adventurer { posX = 1, posY = 1, movementList = "AADADAGGA", name = "Shia", finishMoving = false, playerOrientation = "S", treasures = 0 };
+            instruct.adventurer = new List<IAdventurer> { advent };
+            instruct.mapSizeX = 5;
+            instruct.mapSizeY = 5;
+            var mountain = new Mountain(1, 0) { gotAdventurer = false, tileType = TileType.MOUNTAIN };
+            var mountain2 = new Mountain(2, 1) { gotAdventurer = false, tileType = TileType.MOUNTAIN };
+
+            var treasure = new Treasure(2, 0, 3) { gotAdventurer = false, tileType = TileType.TREASURE };
+            var treasure2 = new Treasure(3, 1, 3) { gotAdventurer = false, tileType = TileType.TREASURE };
+            instruct.tiles = instruct.tiles = new List<ITile> { mountain, treasure, mountain2, treasure2 };
+
+            map = new Map(3, 4);
+            loopClassTest.InitializeGame(instruct);
+
+            loopClassTest.Loop();
+
+            Assert.AreEqual(0, loopClassTest.AdventurerList[0].posX);
+            Assert.AreEqual(3, loopClassTest.AdventurerList[0].posY);
+            Assert.AreEqual("S", loopClassTest.AdventurerList[0].playerOrientation);
+            Assert.AreEqual(3, loopClassTest.AdventurerList[0].treasures);
         }
 
         [TestMethod]

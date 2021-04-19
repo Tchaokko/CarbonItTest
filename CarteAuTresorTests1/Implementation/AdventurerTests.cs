@@ -29,7 +29,7 @@ namespace CarteAuTresor.Tests
             Assert.AreEqual(adventurer.posX, 1);
             Assert.AreEqual(adventurer.posY, 2);
             Assert.AreEqual(false, tempTileMap[1, 1].gotAdventurer);
-            Assert.AreEqual(true, tempTileMap[1, 2].gotAdventurer);
+            Assert.AreEqual(true, tempTileMap[2, 1].gotAdventurer);
 
 
         }
@@ -54,7 +54,7 @@ namespace CarteAuTresor.Tests
             Assert.AreEqual(adventurer.posX, 1);
             Assert.AreEqual(adventurer.posY, 0);
             Assert.AreEqual(false, tempTileMap[1, 1].gotAdventurer);
-            Assert.AreEqual(true, tempTileMap[1, 0].gotAdventurer);
+            Assert.AreEqual(true, tempTileMap[0, 1].gotAdventurer);
         }
 
 
@@ -77,7 +77,7 @@ namespace CarteAuTresor.Tests
             Assert.AreEqual(adventurer.posX, 0);
             Assert.AreEqual(adventurer.posY, 1);
             Assert.AreEqual(false, tempTileMap[1, 1].gotAdventurer);
-            Assert.AreEqual(true, tempTileMap[0, 1].gotAdventurer);
+            Assert.AreEqual(true, tempTileMap[1, 0].gotAdventurer);
         }
 
         [TestMethod]
@@ -99,7 +99,7 @@ namespace CarteAuTresor.Tests
             Assert.AreEqual(adventurer.posX, 2);
             Assert.AreEqual(adventurer.posY, 1);
             Assert.AreEqual(false, tempTileMap[1, 1].gotAdventurer);
-            Assert.AreEqual(true, tempTileMap[2, 1].gotAdventurer);
+            Assert.AreEqual(true, tempTileMap[1, 2].gotAdventurer);
         }
 
         [TestMethod]
@@ -130,7 +130,7 @@ namespace CarteAuTresor.Tests
             adventurer.posX = 1;
             adventurer.posY = 1;
             var tempTileMap = initMap(5, 5);
-            tempTileMap[2, 1] = new Mountain(2, 1);
+            tempTileMap[1, 2] = new Mountain(2, 1);
             mapMock.Setup(s => s.CheckIffOutOfRange(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
             mapMock.SetupGet(s => s.TileMap).Returns(tempTileMap);
 
@@ -151,7 +151,7 @@ namespace CarteAuTresor.Tests
             adventurer.posX = 1;
             adventurer.posY = 1;
             var tempTileMap = initMap(5, 5);
-            tempTileMap[2, 1].gotAdventurer = true;
+            tempTileMap[1, 2].gotAdventurer = true;
             mapMock.Setup(s => s.CheckIffOutOfRange(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
             mapMock.SetupGet(s => s.TileMap).Returns(tempTileMap);
 
@@ -172,7 +172,7 @@ namespace CarteAuTresor.Tests
             adventurer.posX = 1;
             adventurer.posY = 1;
             var tempTileMap = initMap(5, 5);
-            tempTileMap[2, 1] = new Treasure(3, 2, 1);
+            tempTileMap[1, 2] = new Treasure(3, 2, 1);
             mapMock.Setup(s => s.CheckIffOutOfRange(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
             mapMock.SetupGet(s => s.TileMap).Returns(tempTileMap);
 
@@ -184,7 +184,7 @@ namespace CarteAuTresor.Tests
             Assert.AreEqual(adventurer.posX, 2);
             Assert.AreEqual(adventurer.posY, 1);
             Assert.AreEqual(adventurer.treasures, 1);
-            Assert.AreEqual((tempTileMap[2, 1] as Treasure).numberOfTreasure, 2);
+            Assert.AreEqual((tempTileMap[1, 2] as Treasure).numberOfTreasure, 2);
         }
 
         [TestMethod]

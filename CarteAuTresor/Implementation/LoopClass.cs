@@ -34,11 +34,11 @@ namespace CarteAuTresor
         {
             foreach (var adventurer in AdventurerList)
             {
-                if (!map.CheckIffOutOfRange(adventurer.posX, adventurer.posY)
-                    && map.TileMap[adventurer.posX, adventurer.posY].tileType != TileType.MOUNTAIN
-                    && map.TileMap[adventurer.posX, adventurer.posY].gotAdventurer == false)
+                if (!map.CheckIffOutOfRange(adventurer.posY, adventurer.posX)
+                    && map.TileMap[adventurer.posY, adventurer.posX].tileType != TileType.MOUNTAIN
+                    && map.TileMap[adventurer.posY, adventurer.posX].gotAdventurer == false)
                 {
-                    map.TileMap[adventurer.posX, adventurer.posY].gotAdventurer = true;
+                    map.TileMap[adventurer.posY, adventurer.posX].gotAdventurer = true;
                 }
                 else
                     throw new Exception($"Cannot add adventurer {adventurer.name} at position x: {adventurer.posX} y: {adventurer.posY} is out of range or has an incompatible tile");

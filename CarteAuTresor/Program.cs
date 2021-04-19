@@ -14,7 +14,9 @@ namespace CarteAuTresor
                 var loopClass = new LoopClass(new Map(instruction.mapSizeX, instruction.mapSizeY));
                 loopClass.InitializeGame(instruction);
                 var resultMap = loopClass.Loop();
-                fileWrapper.WriteMapToFile(resultMap, instruction.adventurer);
+                var stringToPrint = fileWrapper.WriteMapToStringArray(resultMap, instruction.adventurer);
+                fileWrapper.WriteResultToFile(stringToPrint);
+
             }
         }
     }

@@ -22,42 +22,42 @@ namespace CarteAuTresor
             switch (playerOrientation)
             {
                 case "S":
-                    if (!map.CheckIffOutOfRange(posX, posY + 1) && map.TileMap[posX, posY + 1].tileType != TileType.MOUNTAIN && !map.TileMap[posX, posY + 1].gotAdventurer)
+                    if (!map.CheckIffOutOfRange(posY + 1, posX) && map.TileMap[posY + 1, posX].tileType != TileType.MOUNTAIN && !map.TileMap[posY + 1, posX].gotAdventurer)
                     {
-                        map.TileMap[posX, posY].gotAdventurer = false;
+                        map.TileMap[posY, posX].gotAdventurer = false;
                         posY = posY + 1;
                         TryAndGetTreasure(map);
-                        map.TileMap[posX, posY].gotAdventurer = true;
+                        map.TileMap[posY, posX].gotAdventurer = true;
 
                     }
                     break;
                 case "N":
-                    if (!map.CheckIffOutOfRange(posX, posY - 1) && map.TileMap[posX, posY - 1].tileType != TileType.MOUNTAIN && !map.TileMap[posX, posY - 1].gotAdventurer)
+                    if (!map.CheckIffOutOfRange(posY - 1, posX) && map.TileMap[posY - 1, posX].tileType != TileType.MOUNTAIN && !map.TileMap[posY - 1, posX].gotAdventurer)
                     {
-                        map.TileMap[posX, posY].gotAdventurer = false;
+                        map.TileMap[posY, posX].gotAdventurer = false;
                         posY = posY - 1;
                         TryAndGetTreasure(map);
-                        map.TileMap[posX, posY].gotAdventurer = true;
+                        map.TileMap[posY, posX].gotAdventurer = true;
 
                     }
                     break;
                 case "E":
-                    if (!map.CheckIffOutOfRange(posX + 1, posY) && map.TileMap[posX + 1, posY].tileType != TileType.MOUNTAIN && !map.TileMap[posX + 1, posY].gotAdventurer)
+                    if (!map.CheckIffOutOfRange(posY, posX + 1) && map.TileMap[posY, posX + 1].tileType != TileType.MOUNTAIN && !map.TileMap[posY, posX + 1].gotAdventurer)
                     {
-                        map.TileMap[posX, posY].gotAdventurer = false;
+                        map.TileMap[posY, posX].gotAdventurer = false;
                         posX = posX + 1;
                         TryAndGetTreasure(map);
-                        map.TileMap[posX, posY].gotAdventurer = true;
+                        map.TileMap[posY, posX].gotAdventurer = true;
 
                     }
                     break;
                 case "O":
-                    if (!map.CheckIffOutOfRange(posX - 1, posY) && map.TileMap[posX - 1, posY].tileType != TileType.MOUNTAIN && !map.TileMap[posX + 1, posY].gotAdventurer)
+                    if (!map.CheckIffOutOfRange(posY, posX - 1) && map.TileMap[posY, posX - 1].tileType != TileType.MOUNTAIN && !map.TileMap[posY, posX - 1].gotAdventurer)
                     {
-                        map.TileMap[posX, posY].gotAdventurer = false;
+                        map.TileMap[posY, posX].gotAdventurer = false;
                         posX = posX - 1;
                         TryAndGetTreasure(map);
-                        map.TileMap[posX, posY].gotAdventurer = true;
+                        map.TileMap[posY, posX].gotAdventurer = true;
                     }
                     break;
                 default:
@@ -67,9 +67,9 @@ namespace CarteAuTresor
 
         private void TryAndGetTreasure(IMap map)
         {
-            if (map.TileMap[posX, posY].tileType == TileType.TREASURE)
+            if (map.TileMap[posY, posX].tileType == TileType.TREASURE)
             {
-                var treasure = (Treasure)map.TileMap[posX, posY];
+                var treasure = (Treasure)map.TileMap[posY, posX];
                 if (treasure.numberOfTreasure > 0)
                 {
                     treasures += 1;

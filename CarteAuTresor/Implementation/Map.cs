@@ -16,21 +16,21 @@ namespace CarteAuTresor
                 throw new Exception("The map size need to be bigger than 0");
             this.sizeX = sizeX;
             this.sizeY = sizeY;
-            TileMap = new ITile[sizeX, sizeY];
-            for (int x = 0; x < sizeX; x++)
+            TileMap = new ITile[sizeY, sizeX];
+            for (int y = 0; y < sizeY; y++)
             {
-                for (int y = 0; y < sizeY; y++)
+                for (int x = 0; x < sizeX; x++)
                 {
-                    TileMap[x, y] = new Plain(x, y);
+                    TileMap[y, x] = new Plain(x, y);
                 }
             }
         }
 
         public void AddMountainToMap(Mountain mountain)
         {
-            if (!CheckIffOutOfRange(mountain.posX, mountain.posY)
-                && TileMap[mountain.posX, mountain.posY].tileType == TileType.PLAIN)
-                TileMap[mountain.posX, mountain.posY] = mountain;
+            if (!CheckIffOutOfRange(mountain.posY, mountain.posX)
+                && TileMap[mountain.posY, mountain.posX].tileType == TileType.PLAIN)
+                TileMap[mountain.posY, mountain.posX] = mountain;
             else
                 throw new Exception($"Cannot add {TileType.MOUNTAIN} tile at position x: {mountain.posX} y: {mountain.posY} is out of range or already has a incompatible tile.");
 
@@ -38,17 +38,17 @@ namespace CarteAuTresor
 
         public void AddTreasureToMap(Treasure treasure)
         {
-            if (!CheckIffOutOfRange(treasure.posX, treasure.posY)
-                && TileMap[treasure.posX, treasure.posY].tileType != TileType.MOUNTAIN)
+            if (!CheckIffOutOfRange(treasure.posY, treasure.posX)
+                && TileMap[treasure.posY, treasure.posX].tileType != TileType.MOUNTAIN)
             {
-                if (TileMap[treasure.posX, treasure.posY].tileType == TileType.TREASURE)
+                if (TileMap[treasure.posY, treasure.posX].tileType == TileType.TREASURE)
                 {
-                    var tempTreasure = (Treasure)TileMap[treasure.posX, treasure.posY];
+                    var tempTreasure = (Treasure)TileMap[treasure.posY, treasure.posX];
                     tempTreasure.numberOfTreasure += treasure.numberOfTreasure;
                 }
                 else
                 {
-                    TileMap[treasure.posX, treasure.posY] = treasure;
+                    TileMap[treasure.posY, treasure.posX] = treasure;
                 }
             }
             else
