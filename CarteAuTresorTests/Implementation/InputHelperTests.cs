@@ -45,12 +45,12 @@ namespace CarteAuTresor.Tests
             //Assert
             Assert.AreEqual(2, instruction.tiles.Count);
             Assert.AreEqual(TileType.MOUNTAIN, instruction.tiles[0].tileType);
-            Assert.AreEqual(1, instruction.tiles[0].posX);
-            Assert.AreEqual(1, instruction.tiles[0].posY);
+            Assert.AreEqual(1, instruction.tiles[0].PosX);
+            Assert.AreEqual(1, instruction.tiles[0].PosY);
 
             Assert.AreEqual(TileType.MOUNTAIN, instruction.tiles[1].tileType);
-            Assert.AreEqual(1, instruction.tiles[1].posX);
-            Assert.AreEqual(2, instruction.tiles[1].posY);
+            Assert.AreEqual(1, instruction.tiles[1].PosX);
+            Assert.AreEqual(2, instruction.tiles[1].PosY);
 
         }
 
@@ -69,13 +69,13 @@ namespace CarteAuTresor.Tests
             //Assert
             Assert.AreEqual(2, instruction.tiles.Count);
             Assert.AreEqual(TileType.TREASURE, instruction.tiles[0].tileType);
-            Assert.AreEqual(1, instruction.tiles[0].posX);
-            Assert.AreEqual(1, instruction.tiles[0].posY);
+            Assert.AreEqual(1, instruction.tiles[0].PosX);
+            Assert.AreEqual(1, instruction.tiles[0].PosY);
             Assert.AreEqual(1, (instruction.tiles[0] as Treasure).numberOfTreasure);
 
             Assert.AreEqual(TileType.TREASURE, instruction.tiles[1].tileType);
-            Assert.AreEqual(1, instruction.tiles[1].posX);
-            Assert.AreEqual(2, instruction.tiles[1].posY);
+            Assert.AreEqual(1, instruction.tiles[1].PosX);
+            Assert.AreEqual(2, instruction.tiles[1].PosY);
             Assert.AreEqual(3, (instruction.tiles[1] as Treasure).numberOfTreasure);
         }
 
@@ -93,11 +93,11 @@ namespace CarteAuTresor.Tests
 
             //Assert
             Assert.AreEqual(1, instruction.adventurer.Count);
-            Assert.AreEqual("Indiana", instruction.adventurer[0].name);
-            Assert.AreEqual(1, instruction.adventurer[0].posX);
-            Assert.AreEqual(1, instruction.adventurer[0].posY);
-            Assert.AreEqual("AADADA", instruction.adventurer[0].movementList);
-            Assert.AreEqual("S", instruction.adventurer[0].playerOrientation);
+            Assert.AreEqual("Indiana", instruction.adventurer[0].Name);
+            Assert.AreEqual(1, instruction.adventurer[0].PosX);
+            Assert.AreEqual(1, instruction.adventurer[0].PosY);
+            Assert.AreEqual("AADADA", instruction.adventurer[0].MovementList);
+            Assert.AreEqual("S", instruction.adventurer[0].PlayerOrientation);
         }
 
         [TestMethod]

@@ -14,9 +14,9 @@ namespace CarteAuTresor.Tests
         public void movePlayerInFrontOfHim_ShouldMoveSouthIfAdventurerOrientationIsSouth()
         {
             //Arrange
-            adventurer.playerOrientation = "S";
-            adventurer.posX = 1;
-            adventurer.posY = 1;
+            adventurer.PlayerOrientation = "S";
+            adventurer.PosX = 1;
+            adventurer.PosY = 1;
             var tempTileMap = initMap(5, 5);
             mapMock.Setup(s => s.CheckIffOutOfRange(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
             mapMock.SetupGet(s => s.TileMap).Returns(tempTileMap);
@@ -26,10 +26,10 @@ namespace CarteAuTresor.Tests
             adventurer.movePlayerInFrontOfHim(mapMock.Object);
 
             //Assert
-            Assert.AreEqual(adventurer.posX, 1);
-            Assert.AreEqual(adventurer.posY, 2);
-            Assert.AreEqual(false, tempTileMap[1, 1].gotAdventurer);
-            Assert.AreEqual(true, tempTileMap[2, 1].gotAdventurer);
+            Assert.AreEqual(adventurer.PosX, 1);
+            Assert.AreEqual(adventurer.PosY, 2);
+            Assert.AreEqual(false, tempTileMap[1, 1].GotAdventurer);
+            Assert.AreEqual(true, tempTileMap[2, 1].GotAdventurer);
 
 
         }
@@ -39,9 +39,9 @@ namespace CarteAuTresor.Tests
         public void movePlayerInFrontOfHim_ShouldMoveNorthIfAdventurerOrientationIsNorth()
         {
             //Arrange
-            adventurer.playerOrientation = "N";
-            adventurer.posX = 1;
-            adventurer.posY = 1;
+            adventurer.PlayerOrientation = "N";
+            adventurer.PosX = 1;
+            adventurer.PosY = 1;
             var tempTileMap = initMap(5, 5);
             mapMock.Setup(s => s.CheckIffOutOfRange(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
             mapMock.SetupGet(s => s.TileMap).Returns(tempTileMap);
@@ -51,10 +51,10 @@ namespace CarteAuTresor.Tests
             adventurer.movePlayerInFrontOfHim(mapMock.Object);
 
             //Assert
-            Assert.AreEqual(adventurer.posX, 1);
-            Assert.AreEqual(adventurer.posY, 0);
-            Assert.AreEqual(false, tempTileMap[1, 1].gotAdventurer);
-            Assert.AreEqual(true, tempTileMap[0, 1].gotAdventurer);
+            Assert.AreEqual(adventurer.PosX, 1);
+            Assert.AreEqual(adventurer.PosY, 0);
+            Assert.AreEqual(false, tempTileMap[1, 1].GotAdventurer);
+            Assert.AreEqual(true, tempTileMap[0, 1].GotAdventurer);
         }
 
 
@@ -62,9 +62,9 @@ namespace CarteAuTresor.Tests
         public void movePlayerInFrontOfHim_ShouldMoveWestIfAdventurerOrientationIsWest()
         {
             //Arrange
-            adventurer.playerOrientation = "O";
-            adventurer.posX = 1;
-            adventurer.posY = 1;
+            adventurer.PlayerOrientation = "O";
+            adventurer.PosX = 1;
+            adventurer.PosY = 1;
             var tempTileMap = initMap(5, 5);
             mapMock.Setup(s => s.CheckIffOutOfRange(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
             mapMock.SetupGet(s => s.TileMap).Returns(tempTileMap);
@@ -74,19 +74,19 @@ namespace CarteAuTresor.Tests
             adventurer.movePlayerInFrontOfHim(mapMock.Object);
 
             //Assert
-            Assert.AreEqual(adventurer.posX, 0);
-            Assert.AreEqual(adventurer.posY, 1);
-            Assert.AreEqual(false, tempTileMap[1, 1].gotAdventurer);
-            Assert.AreEqual(true, tempTileMap[1, 0].gotAdventurer);
+            Assert.AreEqual(adventurer.PosX, 0);
+            Assert.AreEqual(adventurer.PosY, 1);
+            Assert.AreEqual(false, tempTileMap[1, 1].GotAdventurer);
+            Assert.AreEqual(true, tempTileMap[1, 0].GotAdventurer);
         }
 
         [TestMethod]
         public void movePlayerInFrontOfHim_ShouldMoveEastIfAdventurerOrientationIsEast()
         {
             //Arrange
-            adventurer.playerOrientation = "E";
-            adventurer.posX = 1;
-            adventurer.posY = 1;
+            adventurer.PlayerOrientation = "E";
+            adventurer.PosX = 1;
+            adventurer.PosY = 1;
             var tempTileMap = initMap(5, 5);
             mapMock.Setup(s => s.CheckIffOutOfRange(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
             mapMock.SetupGet(s => s.TileMap).Returns(tempTileMap);
@@ -96,19 +96,19 @@ namespace CarteAuTresor.Tests
             adventurer.movePlayerInFrontOfHim(mapMock.Object);
 
             //Assert
-            Assert.AreEqual(adventurer.posX, 2);
-            Assert.AreEqual(adventurer.posY, 1);
-            Assert.AreEqual(false, tempTileMap[1, 1].gotAdventurer);
-            Assert.AreEqual(true, tempTileMap[1, 2].gotAdventurer);
+            Assert.AreEqual(adventurer.PosX, 2);
+            Assert.AreEqual(adventurer.PosY, 1);
+            Assert.AreEqual(false, tempTileMap[1, 1].GotAdventurer);
+            Assert.AreEqual(true, tempTileMap[1, 2].GotAdventurer);
         }
 
         [TestMethod]
         public void movePlayerInFrontOfHim_ShouldNotMoveIfTryingToMoveOutOfRange()
         {
             //Arrange
-            adventurer.playerOrientation = "E";
-            adventurer.posX = 1;
-            adventurer.posY = 1;
+            adventurer.PlayerOrientation = "E";
+            adventurer.PosX = 1;
+            adventurer.PosY = 1;
             var tempTileMap = initMap(5, 5);
             mapMock.Setup(s => s.CheckIffOutOfRange(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
             mapMock.SetupGet(s => s.TileMap).Returns(tempTileMap);
@@ -118,17 +118,17 @@ namespace CarteAuTresor.Tests
             adventurer.movePlayerInFrontOfHim(mapMock.Object);
 
             //Assert
-            Assert.AreEqual(adventurer.posX, 1);
-            Assert.AreEqual(adventurer.posY, 1);
+            Assert.AreEqual(adventurer.PosX, 1);
+            Assert.AreEqual(adventurer.PosY, 1);
         }
 
         [TestMethod]
         public void movePlayerInFrontOfHim_ShouldNotMoveIfTryingToMoveOnMountainTile()
         {
             //Arrange
-            adventurer.playerOrientation = "E";
-            adventurer.posX = 1;
-            adventurer.posY = 1;
+            adventurer.PlayerOrientation = "E";
+            adventurer.PosX = 1;
+            adventurer.PosY = 1;
             var tempTileMap = initMap(5, 5);
             tempTileMap[1, 2] = new Mountain(2, 1);
             mapMock.Setup(s => s.CheckIffOutOfRange(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
@@ -139,19 +139,19 @@ namespace CarteAuTresor.Tests
             adventurer.movePlayerInFrontOfHim(mapMock.Object);
 
             //Assert
-            Assert.AreEqual(adventurer.posX, 1);
-            Assert.AreEqual(adventurer.posY, 1);
+            Assert.AreEqual(adventurer.PosX, 1);
+            Assert.AreEqual(adventurer.PosY, 1);
         }
 
         [TestMethod]
         public void movePlayerInFrontOfHim_ShouldNotMoveIfTryingToMoveOnTileWithAnotherPlayer()
         {
             //Arrange
-            adventurer.playerOrientation = "E";
-            adventurer.posX = 1;
-            adventurer.posY = 1;
+            adventurer.PlayerOrientation = "E";
+            adventurer.PosX = 1;
+            adventurer.PosY = 1;
             var tempTileMap = initMap(5, 5);
-            tempTileMap[1, 2].gotAdventurer = true;
+            tempTileMap[1, 2].GotAdventurer = true;
             mapMock.Setup(s => s.CheckIffOutOfRange(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
             mapMock.SetupGet(s => s.TileMap).Returns(tempTileMap);
 
@@ -160,17 +160,17 @@ namespace CarteAuTresor.Tests
             adventurer.movePlayerInFrontOfHim(mapMock.Object);
 
             //Assert
-            Assert.AreEqual(adventurer.posX, 1);
-            Assert.AreEqual(adventurer.posY, 1);
+            Assert.AreEqual(adventurer.PosX, 1);
+            Assert.AreEqual(adventurer.PosY, 1);
         }
 
         [TestMethod]
         public void movePlayerInFrontOfHim_ShouldGetOnlyOneTreasureIfTreasureMap()
         {
             //Arrange
-            adventurer.playerOrientation = "E";
-            adventurer.posX = 1;
-            adventurer.posY = 1;
+            adventurer.PlayerOrientation = "E";
+            adventurer.PosX = 1;
+            adventurer.PosY = 1;
             var tempTileMap = initMap(5, 5);
             tempTileMap[1, 2] = new Treasure(3, 2, 1);
             mapMock.Setup(s => s.CheckIffOutOfRange(It.IsAny<int>(), It.IsAny<int>())).Returns(false);
@@ -181,9 +181,9 @@ namespace CarteAuTresor.Tests
             adventurer.movePlayerInFrontOfHim(mapMock.Object);
 
             //Assert
-            Assert.AreEqual(adventurer.posX, 2);
-            Assert.AreEqual(adventurer.posY, 1);
-            Assert.AreEqual(adventurer.treasures, 1);
+            Assert.AreEqual(adventurer.PosX, 2);
+            Assert.AreEqual(adventurer.PosY, 1);
+            Assert.AreEqual(adventurer.Treasures, 1);
             Assert.AreEqual((tempTileMap[1, 2] as Treasure).numberOfTreasure, 2);
         }
 
@@ -191,14 +191,14 @@ namespace CarteAuTresor.Tests
         public void ChangeOrientation_ShouldOrientPlayerWestIfOrientationIsSouthAndLookingRight()
         {
             //Arrange
-            adventurer.playerOrientation = "S";
+            adventurer.PlayerOrientation = "S";
 
 
             //Act
             adventurer.ChangeOrientation(MovementDirection.RIGHT);
 
             //Assert
-            Assert.AreEqual(adventurer.playerOrientation, "O");
+            Assert.AreEqual(adventurer.PlayerOrientation, "O");
 
         }
 
@@ -206,14 +206,14 @@ namespace CarteAuTresor.Tests
         public void ChangeOrientation_ShouldOrientPlayerEastIfOrientationIsSouthAndLookingLeft()
         {
             //Arrange
-            adventurer.playerOrientation = "S";
+            adventurer.PlayerOrientation = "S";
 
 
             //Act
             adventurer.ChangeOrientation(MovementDirection.LEFT);
 
             //Assert
-            Assert.AreEqual(adventurer.playerOrientation, "E");
+            Assert.AreEqual(adventurer.PlayerOrientation, "E");
 
         }
 
@@ -222,14 +222,14 @@ namespace CarteAuTresor.Tests
         public void ChangeOrientation_ShouldOrientPlayerEastIfOrientationIsNorthAndLookingRight()
         {
             //Arrange
-            adventurer.playerOrientation = "N";
+            adventurer.PlayerOrientation = "N";
 
 
             //Act
             adventurer.ChangeOrientation(MovementDirection.RIGHT);
 
             //Assert
-            Assert.AreEqual(adventurer.playerOrientation, "E");
+            Assert.AreEqual(adventurer.PlayerOrientation, "E");
 
         }
 
@@ -237,14 +237,14 @@ namespace CarteAuTresor.Tests
         public void ChangeOrientation_ShouldOrientPlayerEastIfOrientationIsNorthAndLookingLeft()
         {
             //Arrange
-            adventurer.playerOrientation = "N";
+            adventurer.PlayerOrientation = "N";
 
 
             //Act
             adventurer.ChangeOrientation(MovementDirection.LEFT);
 
             //Assert
-            Assert.AreEqual(adventurer.playerOrientation, "O");
+            Assert.AreEqual(adventurer.PlayerOrientation, "O");
 
         }
 
@@ -252,14 +252,14 @@ namespace CarteAuTresor.Tests
         public void ChangeOrientation_ShouldOrientPlayerNorthIfOrientationIsEasthAndLookingLeft()
         {
             //Arrange
-            adventurer.playerOrientation = "E";
+            adventurer.PlayerOrientation = "E";
 
 
             //Act
             adventurer.ChangeOrientation(MovementDirection.LEFT);
 
             //Assert
-            Assert.AreEqual(adventurer.playerOrientation, "N");
+            Assert.AreEqual(adventurer.PlayerOrientation, "N");
 
         }
 
@@ -267,14 +267,14 @@ namespace CarteAuTresor.Tests
         public void ChangeOrientation_ShouldOrientPlayerSouthIfOrientationIsEastAndLookingRight()
         {
             //Arrange
-            adventurer.playerOrientation = "E";
+            adventurer.PlayerOrientation = "E";
 
 
             //Act
             adventurer.ChangeOrientation(MovementDirection.RIGHT);
 
             //Assert
-            Assert.AreEqual(adventurer.playerOrientation, "S");
+            Assert.AreEqual(adventurer.PlayerOrientation, "S");
 
         }
 
@@ -283,14 +283,14 @@ namespace CarteAuTresor.Tests
         public void ChangeOrientation_ShouldOrientPlayerNorthIfOrientationIsWestAndLookingRight()
         {
             //Arrange
-            adventurer.playerOrientation = "O";
+            adventurer.PlayerOrientation = "O";
 
 
             //Act
             adventurer.ChangeOrientation(MovementDirection.RIGHT);
 
             //Assert
-            Assert.AreEqual(adventurer.playerOrientation, "N");
+            Assert.AreEqual(adventurer.PlayerOrientation, "N");
 
         }
 
@@ -298,14 +298,14 @@ namespace CarteAuTresor.Tests
         public void ChangeOrientation_ShouldOrientPlayerSouthIfOrientationIsWestAndLookingLeft()
         {
             //Arrange
-            adventurer.playerOrientation = "O";
+            adventurer.PlayerOrientation = "O";
 
 
             //Act
             adventurer.ChangeOrientation(MovementDirection.LEFT);
 
             //Assert
-            Assert.AreEqual(adventurer.playerOrientation, "S");
+            Assert.AreEqual(adventurer.PlayerOrientation, "S");
 
         }
 

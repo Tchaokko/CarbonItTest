@@ -2,9 +2,9 @@
 {
     public interface ITile
     {
-        int posX { get; set; }
-        int posY { get; set; }
+        int PosX { get; set; }
+        int PosY { get; set; }
         TileType tileType { get; set; }
-        bool gotAdventurer { get; set; }
+        bool GotAdventurer { get; set; }
     }
 }

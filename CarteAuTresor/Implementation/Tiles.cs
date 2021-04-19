@@ -7,15 +7,15 @@ namespace CarteAuTresor
     {
         public int numberOfTreasure { get; set; }
         public TileType tileType { get; set; }
-        public int posY { get; set; }
-        public int posX { get; set; }
-        public bool gotAdventurer { get; set; }
+        public int PosY { get; set; }
+        public int PosX { get; set; }
+        public bool GotAdventurer { get; set; }
 
         public Treasure(int treasureNumber, int x, int y)
         {
             numberOfTreasure = treasureNumber;
-            posY = y;
-            posX = x;
+            PosY = y;
+            PosX = x;
             tileType = TileType.TREASURE;
         }
     }
@@ -23,14 +23,14 @@ namespace CarteAuTresor
     public class Mountain : ITile
     {
         public TileType tileType { get; set; }
-        public int posY { get; set; }
-        public int posX { get; set; }
-        public bool gotAdventurer { get; set; }
+        public int PosY { get; set; }
+        public int PosX { get; set; }
+        public bool GotAdventurer { get; set; }
 
         public Mountain(int x, int y)
         {
-            posY = y;
-            posX = x;
+            PosY = y;
+            PosX = x;
             tileType = TileType.MOUNTAIN;
         }
     }
@@ -38,14 +38,14 @@ namespace CarteAuTresor
     public class Plain : ITile
     {
         public TileType tileType { get; set; }
-        public int posY { get; set; }
-        public int posX { get; set; }
-        public bool gotAdventurer { get; set; }
+        public int PosY { get; set; }
+        public int PosX { get; set; }
+        public bool GotAdventurer { get; set; }
 
         public Plain(int x, int y)
         {
-            posX = x;
-            posX = y;
+            PosX = x;
+            PosX = y;
             tileType = TileType.PLAIN;
         }
     }

@@ -4,60 +4,46 @@ namespace CarteAuTresor
 {
     public class Adventurer : IAdventurer
     {
-        public string name { get; set; }
-        public int posX { get; set; }
-        public int posY { get; set; }
-        public string playerOrientation { get; set; }
-        public string movementList { get; set; }
-        public int treasures { get; set; }
-        public bool finishMoving { get; set; }
+        public string Name { get; set; }
+        public int PosX { get; set; }
+        public int PosY { get; set; }
+        public string PlayerOrientation { get; set; }
+        public string MovementList { get; set; }
+        public int Treasures { get; set; }
+        public bool FinishMoving { get; set; }
 
         public Adventurer()
         {
-            finishMoving = false;
+            FinishMoving = false;
         }
 
         public void movePlayerInFrontOfHim(IMap map)
         {
-            switch (playerOrientation)
+            switch (PlayerOrientation)
             {
                 case "S":
-                    if (!map.CheckIffOutOfRange(posY + 1, posX) && map.TileMap[posY + 1, posX].tileType != TileType.MOUNTAIN && !map.TileMap[posY + 1, posX].gotAdventurer)
+                    if (!map.CheckIffOutOfRange(PosY + 1, PosX) && map.TileMap[PosY + 1, PosX].tileType != TileType.MOUNTAIN && !map.TileMap[PosY + 1, PosX].GotAdventurer)
                     {
-                        map.TileMap[posY, posX].gotAdventurer = false;
-                        posY = posY + 1;
-                        TryAndGetTreasure(map);
-                        map.TileMap[posY, posX].gotAdventurer = true;
-
+                        MoveSouth(map);
                     }
                     break;
                 case "N":
-                    if (!map.CheckIffOutOfRange(posY - 1, posX) && map.TileMap[posY - 1, posX].tileType != TileType.MOUNTAIN && !map.TileMap[posY - 1, posX].gotAdventurer)
+                    if (!map.CheckIffOutOfRange(PosY - 1, PosX) && map.TileMap[PosY - 1, PosX].tileType != TileType.MOUNTAIN && !map.TileMap[PosY - 1, PosX].GotAdventurer)
                     {
-                        map.TileMap[posY, posX].gotAdventurer = false;
-                        posY = posY - 1;
-                        TryAndGetTreasure(map);
-                        map.TileMap[posY, posX].gotAdventurer = true;
 
+                        MoveNorth(map);
                     }
                     break;
                 case "E":
-                    if (!map.CheckIffOutOfRange(posY, posX + 1) && map.TileMap[posY, posX + 1].tileType != TileType.MOUNTAIN && !map.TileMap[posY, posX + 1].gotAdventurer)
+                    if (!map.CheckIffOutOfRange(PosY, PosX + 1) && map.TileMap[PosY, PosX + 1].tileType != TileType.MOUNTAIN && !map.TileMap[PosY, PosX + 1].GotAdventurer)
                     {
-                        map.TileMap[posY, posX].gotAdventurer = false;
-                        posX = posX + 1;
-                        TryAndGetTreasure(map);
-                        map.TileMap[posY, posX].gotAdventurer = true;
-
+                        MoveEast(map);
                     }
                     break;
                 case "O":
-                    if (!map.CheckIffOutOfRange(posY, posX - 1) && map.TileMap[posY, posX - 1].tileType != TileType.MOUNTAIN && !map.TileMap[posY, posX - 1].gotAdventurer)
+                    if (!map.CheckIffOutOfRange(PosY, PosX - 1) && map.TileMap[PosY, PosX - 1].tileType != TileType.MOUNTAIN && !map.TileMap[PosY, PosX - 1].GotAdventurer)
                     {
-                        map.TileMap[posY, posX].gotAdventurer = false;
-                        posX = posX - 1;
-                        TryAndGetTreasure(map);
-                        map.TileMap[posY, posX].gotAdventurer = true;
+                        MoveWest(map);
                     }
                     break;
                 default:
@@ -65,14 +51,46 @@ namespace CarteAuTresor
             }
         }
 
+        private void MoveSouth(IMap map)
+        {
+            map.TileMap[PosY, PosX].GotAdventurer = false;
+            PosY = PosY + 1;
+            TryAndGetTreasure(map);
+            map.TileMap[PosY, PosX].GotAdventurer = true;
+        }
+
+        private void MoveNorth(IMap map)
+        {
+            map.TileMap[PosY, PosX].GotAdventurer = false;
+            PosY = PosY - 1;
+            TryAndGetTreasure(map);
+            map.TileMap[PosY, PosX].GotAdventurer = true;
+        }
+
+        private void MoveWest(IMap map)
+        {
+            map.TileMap[PosY, PosX].GotAdventurer = false;
+            PosX = PosX - 1;
+            TryAndGetTreasure(map);
+            map.TileMap[PosY, PosX].GotAdventurer = true;
+        }
+
+        private void MoveEast(IMap map)
+        {
+            map.TileMap[PosY, PosX].GotAdventurer = false;
+            PosX = PosX + 1;
+            TryAndGetTreasure(map);
+            map.TileMap[PosY, PosX].GotAdventurer = true;
+        }
+
         private void TryAndGetTreasure(IMap map)
         {
-            if (map.TileMap[posY, posX].tileType == TileType.TREASURE)
+            if (map.TileMap[PosY, PosX].tileType == TileType.TREASURE)
             {
-                var treasure = (Treasure)map.TileMap[posY, posX];
+                var treasure = (Treasure)map.TileMap[PosY, PosX];
                 if (treasure.numberOfTreasure > 0)
                 {
-                    treasures += 1;
+                    Treasures += 1;
                     treasure.numberOfTreasure -= 1;
                 }
             }
@@ -81,53 +99,53 @@ namespace CarteAuTresor
 
         public void ChangeOrientation(MovementDirection movementDirection)
         {
-            switch (playerOrientation)
+            switch (PlayerOrientation)
             {
                 case "S":
                     if (movementDirection == MovementDirection.RIGHT)
                     {
-                        playerOrientation = "O";
+                        PlayerOrientation = "O";
 
                     }
                     else if (movementDirection == MovementDirection.LEFT)
                     {
-                        playerOrientation = "E";
+                        PlayerOrientation = "E";
 
                     }
                     break;
                 case "N":
                     if (movementDirection == MovementDirection.RIGHT)
                     {
-                        playerOrientation = "E";
+                        PlayerOrientation = "E";
 
                     }
                     else if (movementDirection == MovementDirection.LEFT)
                     {
-                        playerOrientation = "O";
+                        PlayerOrientation = "O";
 
                     }
                     break;
                 case "E":
                     if (movementDirection == MovementDirection.RIGHT)
                     {
-                        playerOrientation = "S";
+                        PlayerOrientation = "S";
 
                     }
                     else if (movementDirection == MovementDirection.LEFT)
                     {
-                        playerOrientation = "N";
+                        PlayerOrientation = "N";
 
                     }
                     break;
                 case "O":
                     if (movementDirection == MovementDirection.RIGHT)
                     {
-                        playerOrientation = "N";
+                        PlayerOrientation = "N";
 
                     }
                     else if (movementDirection == MovementDirection.LEFT)
                     {
-                        playerOrientation = "S";
+                        PlayerOrientation = "S";
 
                     }
                     break;

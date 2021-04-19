@@ -8,24 +8,24 @@ namespace CarteAuTresor
     public class InputHelper
     {
 
-        public InstructionDto instruction { get; set; }
-        public IFileWrapper fileWrapper { get; set; }
+        public InstructionDto Instruction { get; set; }
+        public IFileWrapper FileWrapper { get; set; }
 
         public InputHelper(IFileWrapper _fileWrapper)
         {
-            fileWrapper = _fileWrapper;
+            FileWrapper = _fileWrapper;
         }
 
         public InstructionDto ReadFileAndPutIntoInstruction(string FileName)
         {
-            instruction = new InstructionDto();
-            var lines = fileWrapper.ReadAllLines(FileName);
+            Instruction = new InstructionDto();
+            var lines = FileWrapper.ReadAllLines(FileName);
             int lineNumber = 0;
             foreach (var line in lines)
             {
                 ParseLine(line, lineNumber++);
             }
-            return instruction;
+            return Instruction;
         }
 
         private void ParseLine(string line, int lineNumber)
@@ -34,24 +34,24 @@ namespace CarteAuTresor
             {
                 case 'M':
                     var (x, y) = ParseSimpleLine(line, lineNumber);
-                    instruction.tiles.Add(new Mountain(x, y));
+                    Instruction.tiles.Add(new Mountain(x, y));
                     break;
                 case 'C':
                     var (mapX, mapY) = ParseSimpleLine(line, lineNumber);
-                    instruction.mapSizeX = mapX;
-                    instruction.mapSizeY = mapY;
+                    Instruction.mapSizeX = mapX;
+                    Instruction.mapSizeY = mapY;
                     break;
                 case 'T':
-                    instruction.tiles.Add(ParseTreasureLine(line, lineNumber));
+                    Instruction.tiles.Add(ParseTreasureLine(line, lineNumber));
                     break;
                 case 'A':
-                    instruction.adventurer.Add(ParsePlayerInstructionLine(line, lineNumber));
+                    Instruction.adventurer.Add(ParsePlayerInstructionLine(line, lineNumber));
                     break;
                 case '#':
-                    Console.WriteLine(string.Format("Ignoring line number {0}", lineNumber.ToString()));
+                    Console.WriteLine($"Ignoring line number {lineNumber}");
                     break;
                 default:
-                    throw new Exception(string.Format("Line number {0} is not conform to the documentation", lineNumber.ToString()));
+                    throw new Exception(string.Format($"Line number {lineNumber} is not conform to the documentation"));
             }
         }
 
@@ -85,7 +85,7 @@ namespace CarteAuTresor
                 && directionRegex.IsMatch(splittedLine[4])
                 && instructionRegex.IsMatch(splittedLine[5]))
             {
-                return new Adventurer { movementList = splittedLine[5], playerOrientation = splittedLine[4], posX = posX, posY = posY, name = splittedLine[1] };
+                return new Adventurer { MovementList = splittedLine[5], PlayerOrientation = splittedLine[4], PosX = posX, PosY = posY, Name = splittedLine[1] };
             }
             throw new Exception($"The line number {lineNumber} is not valid");
         }
@@ -103,7 +103,7 @@ namespace CarteAuTresor
 
 
             }
-            throw new Exception(string.Format("The line number {0} is not valid", ++lineNumber));
+            throw new Exception($"The line number {++lineNumber} is not valid");
         }
     }
 }

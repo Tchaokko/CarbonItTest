@@ -23,27 +23,27 @@ namespace CarteAuTresor.Implementation
             List<string> lineForMap = new List<string>();
             List<string> playerLine = new List<string>();
             List<string> treasureLine = new List<string>();
-            result.Add($"C - {map.sizeX} - {map.sizeY}");
+            result.Add($"C - {map.SizeX} - {map.SizeY}");
             var numberOfSpaces = 1;
 
             foreach (var adventurer in adventurers)
             {
-                playerLine.Add($"A - {adventurer.name} - {adventurer.posX} - {adventurer.posY} - {adventurer.playerOrientation} - {adventurer.treasures}");
-                if (numberOfSpaces < adventurer.name.Length)
-                    numberOfSpaces = adventurer.name.Length + 2;
+                playerLine.Add($"A - {adventurer.Name} - {adventurer.PosX} - {adventurer.PosY} - {adventurer.PlayerOrientation} - {adventurer.Treasures}");
+                if (numberOfSpaces < adventurer.Name.Length)
+                    numberOfSpaces = adventurer.Name.Length + 2;
             }
-            for (int y = 0; y < map.sizeY; y++)
+            for (int y = 0; y < map.SizeY; y++)
             {
-                string[] line = new string[map.sizeX];
-                for (int x = 0; x < map.sizeX; x++)
+                string[] line = new string[map.SizeX];
+                for (int x = 0; x < map.SizeX; x++)
                 {
-                    if (map.TileMap[y, x].gotAdventurer)
+                    if (map.TileMap[y, x].GotAdventurer)
                     {
                         foreach (var adventurer in adventurers)
                         {
-                            if (adventurer.posX == x && adventurer.posY == y)
+                            if (adventurer.PosX == x && adventurer.PosY == y)
                             {
-                                line[x] += $"A {adventurer.name}  ";
+                                line[x] += $"A {adventurer.Name}  ";
                             }
                         }
                     }

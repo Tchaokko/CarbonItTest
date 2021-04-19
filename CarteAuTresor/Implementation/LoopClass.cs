@@ -6,12 +6,12 @@ namespace CarteAuTresor
 {
     public class LoopClass
     {
-        public IMap map { get; set; }
+        public IMap Map { get; set; }
         public List<IAdventurer> AdventurerList { get; set; }
 
         public LoopClass(IMap _map)
         {
-            map = _map;
+            Map = _map;
         }
 
         public void InitializeGame(InstructionDto instruction)
@@ -19,10 +19,10 @@ namespace CarteAuTresor
             foreach (var tile in instruction.tiles)
             {
                 if (tile.tileType == TileType.MOUNTAIN)
-                    map.AddMountainToMap((Mountain)tile);
+                    Map.AddMountainToMap((Mountain)tile);
                 else
                 {
-                    map.AddTreasureToMap((Treasure)tile);
+                    Map.AddTreasureToMap((Treasure)tile);
                 }
             }
             AdventurerList = instruction.adventurer;
@@ -34,14 +34,14 @@ namespace CarteAuTresor
         {
             foreach (var adventurer in AdventurerList)
             {
-                if (!map.CheckIffOutOfRange(adventurer.posY, adventurer.posX)
-                    && map.TileMap[adventurer.posY, adventurer.posX].tileType != TileType.MOUNTAIN
-                    && map.TileMap[adventurer.posY, adventurer.posX].gotAdventurer == false)
+                if (!Map.CheckIffOutOfRange(adventurer.PosY, adventurer.PosX)
+                    && Map.TileMap[adventurer.PosY, adventurer.PosX].tileType != TileType.MOUNTAIN
+                    && Map.TileMap[adventurer.PosY, adventurer.PosX].GotAdventurer == false)
                 {
-                    map.TileMap[adventurer.posY, adventurer.posX].gotAdventurer = true;
+                    Map.TileMap[adventurer.PosY, adventurer.PosX].GotAdventurer = true;
                 }
                 else
-                    throw new Exception($"Cannot add adventurer {adventurer.name} at position x: {adventurer.posX} y: {adventurer.posY} is out of range or has an incompatible tile");
+                    throw new Exception($"Cannot add adventurer {adventurer.Name} at position x: {adventurer.PosX} y: {adventurer.PosY} is out of range or has an incompatible tile");
             }
         }
 
@@ -53,12 +53,12 @@ namespace CarteAuTresor
             {
                 foreach (var adventurer in AdventurerList)
                 {
-                    if (adventurer.movementList.Length > instructionIndex)
+                    if (adventurer.MovementList.Length > instructionIndex)
                     {
-                        var movement = adventurer.movementList[instructionIndex];
+                        var movement = adventurer.MovementList[instructionIndex];
                         if (movement == 'A')
                         {
-                            adventurer.movePlayerInFrontOfHim(map);
+                            adventurer.movePlayerInFrontOfHim(Map);
                         }
                         else
                         {
@@ -68,16 +68,16 @@ namespace CarteAuTresor
                                 adventurer.ChangeOrientation(MovementDirection.LEFT);
                         }
                     }
-                    else if (adventurer.movementList.Length < instructionIndex
-                        && !adventurer.finishMoving)
+                    else if (adventurer.MovementList.Length < instructionIndex
+                        && !adventurer.FinishMoving)
                     {
                         instructionFinished += 1;
-                        adventurer.finishMoving = true;
+                        adventurer.FinishMoving = true;
                     }
                 }
                 instructionIndex++;
             }
-            return map;
+            return Map;
         }
     }
 }

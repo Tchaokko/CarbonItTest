@@ -4,13 +4,13 @@
     {
         public void movePlayerInFrontOfHim(IMap map);
         public void ChangeOrientation(MovementDirection movementDirection);
-        public string name { get; set; }
-        public int posX { get; set; }
-        public int posY { get; set; }
-        public string playerOrientation { get; set; }
-        public string movementList { get; set; }
-        public int treasures { get; set; }
-        public bool finishMoving { get; set; }
+        public string Name { get; set; }
+        public int PosX { get; set; }
+        public int PosY { get; set; }
+        public string PlayerOrientation { get; set; }
+        public string MovementList { get; set; }
+        public int Treasures { get; set; }
+        public bool FinishMoving { get; set; }
 
 
     }

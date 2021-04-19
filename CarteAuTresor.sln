@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarteAuTresor", "CarteAuTresor\CarteAuTresor.csproj", "{6A2633DF-6630-4558-9F05-22CDF39F3831}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarteAuTresorTests", "CarteAuTresorTests1\CarteAuTresorTests.csproj", "{D6123713-8223-45B2-A319-7005966A9CAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarteAuTresorTests", "CarteAuTresorTests\CarteAuTresorTests.csproj", "{D6123713-8223-45B2-A319-7005966A9CAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
